@@ -231,25 +231,21 @@ In some use cases, whitelisting or blacklisting individual views is not practica
 
 To cover this use-case, Smartlook offers **on some platforms** a convenient way to blacklist or whitelist all descendants of some class or visual elements that conform to a protocol.
 
-<MD visibleOn="ios" markup={`
-On iOS, you can blacklist or whitelist all instances of a **\`UIView\` subclass** or all \`UIView\` or all UIView subclasses that conform to a **protocol**.
-`} />
-
-<TextBlock>{`
-More on the topic in <Link to="/api_reference?platform=ios#sensitive-data-hiding">API reference</Link>.
+<TextBlock kind="note" visibleOn="ios">{`
+On iOS, it is also possible to blacklist or whitelist all instances of a **\`UIView\` subclass** or all \`UIView\` or all UIView subclasses that conform to a **protocol**. More on the topic in <Link to="/api_reference?platform=ios#sensitive-data-hiding">API reference</Link>.
 `}</TextBlock>
 
 ## Handling Content Presented in WebViews
 
 Native WebView classes are blacklisted by default. Its instances, or the whole class, must be whitelisted in order to record its content. However, a whitelisted web view can still contain HTML elements with sensitive content, and Smartlook thus does not record the HTML elements where the user enters data.
 
-In order to change the default behaviour, HTML elements that are not recorded by default can be whitelisted by assigning `smartlook-show` CSS class to them. Any HTML element that should not be recorded can be blacklisted by assigning `smartlook-hide` CSS class to it. 
-
-<Link to="/api_reference">FIXME API reference</Link>.
+<TextBlock>
+In order to change the default behaviour, HTML elements that are not recorded by default can be whitelisted by assigning `smartlook-show` CSS class to them. Any HTML element that should not be recorded can be blacklisted by assigning `smartlook-hide` CSS class to it: <Link to="/api_reference#sensitive-data-hiding">API reference</Link>. 
+</TextBlock>
 
 ### Rendering Modes: Handling Sensitive Data at the Whole Screen Level
 
-There can be scenarios when direct recording of the screen is not appropriate or necessary to understand the user behaviour. In such  cases, Smartlook can be instructed to use (permanently or just temporarily) one of its wireframe rendering modes.
+There can be scenarios when direct recording of the screen is not appropriate or necessary to understand the user behaviour. In such cases, Smartlook can be instructed to use (permanently or just temporarily) one of its wireframe rendering modes.
 
 When a wireframe mode is on, Smartlook draws a sketch of the screens instead of copying its content literally into the video. The principal UI elements and user interaction with them are still clearly distinguishable, but their actual look and content (texts, images) are replaced by an abstract representation.
 
@@ -277,11 +273,11 @@ Click events in the area of the system keyboard are never recorded by Smartlook.
 
 The default setting is to track all events (with the exception of events on the keyboard, for obvious user privacy reasons). When this is not desired, the application may fine-tune the level of tracked events.
 
-Typically, the default **Full Tracking** mode is desired, as it gives a detailed picture of user activities.
+Typically, the default **`Full Tracking`** mode is desired, as it gives a detailed picture of user activities.
 
-OOn the other hand, on some screens the event location of touches on an otherwise blacklisted view can reveal sensitive private information (e.g., custom input view for PIN). In such a case, touches should not be recorded, and the application should switch to the **Ignore User Interaction Events** mode temporarily.
+OOn the other hand, on some screens the event location of touches on an otherwise blacklisted view can reveal sensitive private information (e.g., custom input view for PIN). In such a case, touches should not be recorded, and the application should switch to the **`Ignore User Interaction Events`** mode temporarily.
 
-In specific cases, some apps that handle complex private information on particular screens may prefer stopping event recording altogether, by switching to the **No Tracking** mode for the screens.
+In specific cases, some apps that handle complex private information on particular screens may prefer stopping event recording altogether, by switching to the **`No Tracking`** mode for the screens.
 
 <TextBlock kind="note">{`
 Event tracking mode cannot be set on per-UI-element basis, only for the whole application.
