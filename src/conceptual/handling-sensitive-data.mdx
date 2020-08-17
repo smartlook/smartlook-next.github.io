@@ -7,6 +7,8 @@ route: /conceptual/handling-sensitive-data
 import { Code, CodeBlock, TextBlock, Link, MD } from "components";
 import { usePlatforms } from 'hooks'
 
+import rendering_modes from 'assets/rendering_modes.png'
+
 <TextBlock kind='title'>Handling Sensitive Data</TextBlock>
 
 The goal of analytic is to understand the user journey in the app and their interaction with it to improve the user experience. To gather the necessary data, Smartlook follows user actions and records what users see on the screen. This indeed represents a challenge for protecting user privacy - out of decency, the law requirements, and also because the data itself is rarely needed for analytical purposes. 
@@ -39,38 +41,142 @@ In order to provide robust user privacy protection by default, some UI elements,
 ## Handling Sensitivity of Individual UI Elements
 
 In order not to record a particular view, like here in an example with an image view that shows a portrait image of the user, use a variable that holds a reference to the view with one of the following approaches to black list it, e.g., 
- 
-<CodeBlock  kind="example"
-    snippets={{
-      ios: {
+
+<CodeBlock kind="example"
+  snippets={{
+    android: {
+      java: `
+ANDROID - java
+      `,
+    kotlin: `
+ANDROID - kotlin
+      `,
+    },
+    ios: {
       swift: `
 Smartlook.registerBlacklisted(object: self.portraitImageView)
 self.portraitImageView.slSensitive = true
-`,
+      `,
       'objective-c': `
 [Smartlook registerBlacklistedObject: self.portraitImageView];
 self.portraitImageView.slSensitive = YES;
-`
+      `,
+    },
+    react: {
+      js: `
+REACT NATIVE - javascript
+`,
+    },
+    unity: {
+      csharp: `
+UNITY - C#
+`,
+    },
+    unreal: {
+      csharp: `
+UNREAL - C#
+      `,
+    },
+    cocos: {
+      java: `
+COCOS - java
+      `,
+      kotlin: `
+COCOS - kotlin
+      `
+   },
+   cordova: {
+      javascript: `
+CORDOVA - javascript
+    `,
+    },
+    ionic: { 
+      typescrit: `
+IONIC - typescript
+      `,
+    },
+   flutter: {
+      dart: `
+FLUTTER - dart
+   `,
+   },
+xamarin: {
+      csharp: `
+XAMARIN - C#
+      `,
     },
   }}
 />
 
+
 When, on the other hand, an otherwise blacklisted view (in our example a web view) should be recorded, follow this example code:
  
-<CodeBlock  kind="example"
-    snippets={{
-      ios: {
+<CodeBlock kind="example"
+  snippets={{
+    android: {
+      java: `
+ANDROID - java
+      `,
+    kotlin: `
+ANDROID - kotlin
+      `,
+    },
+    ios: {
       swift: `
 Smartlook.unregisterBlacklisted(object: self.introWebView)
 self.introWebView.slSensitive = false
-`,
+      `,
       'objective-c': `
 [Smartlook unregisterBlacklistedObject: self.self.introWebView];
 self.self.introWebView.slSensitive = NO;
-`
+      `,
+    },
+    react: {
+      js: `
+REACT NATIVE - javascript
+`,
+    },
+    unity: {
+      csharp: `
+UNITY - C#
+`,
+    },
+    unreal: {
+      csharp: `
+UNREAL - C#
+      `,
+    },
+    cocos: {
+      java: `
+COCOS - java
+      `,
+      kotlin: `
+COCOS - kotlin
+      `
+   },
+   cordova: {
+      javascript: `
+CORDOVA - javascript
+    `,
+    },
+    ionic: { 
+      typescrit: `
+IONIC - typescript
+      `,
+    },
+   flutter: {
+      dart: `
+FLUTTER - dart
+   `,
+   },
+xamarin: {
+      csharp: `
+XAMARIN - C#
+      `,
     },
   }}
 />
+
 
 <TextBlock kind="note" visibleOn="ios">{`
 Note also, that the \`slSensitive\` property of \`UIView\` can be set in Xcode Interface Builder as well, i.e., it is not necessary creating an \`@IBOutlet\` for a view that is designed in the Interface Builder just in order to set its sensitivity.
@@ -112,9 +218,7 @@ There can be scenarios when direct recording of the screen is not appropriate or
 
 When a wireframe mode is on, Smartlook draws a sketch of the screens instead of copying its content literally into the video. The principal UI elements and user interaction with them are still clearly distinguishable, but their actual look and content (texts, images) are replaced by an abstract representation.
 
-*i do not understand how to link images, the example in index.mdx is useless*
-```<img src={rendering_native.png} />```
-```<img src={rendering_wireframe.png} />```
+<img src={rendering_modes} />
 
 ### Setting Rendering Mode
 

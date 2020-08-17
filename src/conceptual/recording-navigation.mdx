@@ -28,49 +28,71 @@ In such a case, in orded to get useful navigation data, navigation events must b
 <TextBlock kind="note">
 The navigation event recorded by this method is indistinguishable from the auto-detected navigation events.
 </TextBlock>
- 
-<CodeBlock  kind="example"
-    snippets={{
-      android: {
+
+<CodeBlock kind="example"
+  snippets={{
+    android: {
+      java: `
+Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START);
+      `,
+    kotlin: `
+Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START)
+      `,
+    },
+    ios: {
+      swift: `
+Smartlook.trackNavigationEvent(withControllerId: "LOGIN_SCREEN", type: .enter)
+      `,
+      'objective-c': `
+[Smartlook trackNavigationEventWithControllerId:@"LOGIN_SCREEN" type:SLNavigationTypeEnter];
+      `,
+    },
+    react: {
+      js: `
+REACT NATIVE - javascript
+`,
+    },
+    unity: {
+      csharp: `
+SmartlookUnity.Smartlook.TrackNavigationEvent("TestScreen", SmartlookUnity.Smartlook.NavigationEventType.enter);
+`,
+    },
+    unreal: {
+      csharp: `
+UNREAL - C#
+      `,
+    },
+    cocos: {
       java: `
 Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START);
       `,
       kotlin: `
 Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START)
-      `,
-    },
-    cordova: {
+      `
+   },
+   cordova: {
       javascript: `
 Smartlook.trackNavigationEvent({name: "LOGIN_SCREEN", viewState: Smartlook.ViewState.START})
-      `,
+    `,
     },
-    ionic: {
-      typescript: `
+    ionic: { 
+      typescrit: `
 smartlook.trackNavigationEvent(new SmartlookNavigationEvent("LOGIN_SCREEN", SmartlookViewState.START));
       `,
-    },   
-      ios: {
-      swift: `
-Smartlook.trackNavigationEvent(withControllerId: "LOGIN_SCREEN", type: .enter)
-`,
-      'objective-c': `
-[Smartlook trackNavigationEventWithControllerId:@"LOGIN_SCREEN" type:SLNavigationTypeEnter];`,
     },
-      unity: {
-        csharp: `
-SmartlookUnity.Smartlook.TrackNavigationEvent("TestScreen", SmartlookUnity.Smartlook.NavigationEventType.enter);
-        `
-      },
-      cocos: {
-        java: `
-Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START);
+   flutter: {
+      dart: `
+FLUTTER - dart
+   `,
+   },
+xamarin: {
+      csharp: `
+XAMARIN - C#
       `,
-      kotlin: `
-Smartlook.trackNavigationEvent("LOGIN_SCREEN", ViewState.START)
-      `,
-      }
+    },
   }}
 />
+
 
 where the type value is either of `enter` or `exit` kind. The `exit` event also records the duration from the previous corresponding enter event.
 
