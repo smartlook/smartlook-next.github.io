@@ -46,17 +46,9 @@ The events created by these methods are treated by Smartlook exactly the way aut
 <TextBlock>{`
 Custom events are identified by a name, and can also have additional optional properties. The additional properties can be used in funnels and any other filtering.  For details, see the <Link to="/api_reference#custom-event">API Reference</Link>.
 `}</TextBlock>
- 
+
 <CodeBlock kind="example"
-    snippets={{
-      ios: {
-        swift: `
-Smartlook.trackCustomEvent(name: "CUSTOM EVENT", props: [ "PROP_1" : "value 1"])
-`,
-        'objective-c': `
-[Smartlook trackCustomEventWithName:@"CUSTOM EVENT" props:@{ @"PROP 1": @"record value" }];
-      `,
-    },
+  snippets={{
     android: {
       java: `
 JSONObject props = new JSONObject();\n
@@ -67,7 +59,7 @@ try {
 }\n
 Smartlook.trackCustomEvent("CUSTOM EVENT", props);
       `,
-      kotlin: `
+    kotlin: `
 val props = JSONObject()\n
 try {
   props.put("PROP_1", "value 1")
@@ -75,6 +67,29 @@ try {
     e.printStackTrace()
 }\n
 Smartlook.trackCustomEvent("CUSTOM EVENT, props)"
+      `,
+    },
+    ios: {
+      swift: `
+Smartlook.trackCustomEvent(name: "CUSTOM EVENT", props: [ "PROP_1" : "value 1"])
+      `,
+      'objective-c': `
+[Smartlook trackCustomEventWithName:@"CUSTOM EVENT" props:@{ @"PROP 1": @"record value" }];
+      `,
+    },
+    react: {
+      js: `
+REACT NATIVE - javascript
+`,
+    },
+    unity: {
+      csharp: `
+SmartlookUnity.Smartlook.TrackCustomEvent("CustomEvent", JsonUtility.ToJson(player));
+`,
+    },
+    unreal: {
+      csharp: `
+UNREAL - C#
       `,
     },
     cocos: {
@@ -95,21 +110,26 @@ try {
     e.printStackTrace()
 }\n
 Smartlook.trackCustomEvent("CUSTOM EVENT, props)"
-      `,
-    },
-    unity: {
-      csharp: `
-SmartlookUnity.Smartlook.TrackCustomEvent("CustomEvent", JsonUtility.ToJson(player));
       `
-    },
-    cordova: {
+   },
+   cordova: {
       javascript: `
 Smartlook.trackCustomEvent({name: "CUSTOM EVENT", eventProperties: {PROP_1: "value 1"}})
+    `,
+    },
+    ionic: { 
+      typescrit: `
+smartlook.trackCustomEvent(new SmartlookCustomEvent("CUSTOM EVENT", eventProperties: {PROP_1: "value 1"});
       `,
     },
-    ionic: {
-      typescript: `
-smartlook.trackCustomEvent(new SmartlookCustomEvent("CUSTOM EVENT", eventProperties: {PROP_1: "value 1"});
+   flutter: {
+      dart: `
+FLUTTER - dart
+   `,
+   },
+xamarin: {
+      csharp: `
+XAMARIN - C#
       `,
     },
   }}

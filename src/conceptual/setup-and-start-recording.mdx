@@ -19,9 +19,9 @@ Some Android simulators are not very reliable when running low-level libraries l
 
 In order to function properly, the setup should happen as soon as possible in the app life cycle:
 
-<CodeBlock  kind="example"
+<CodeBlock kind="example"
   snippets={{
-   android: {
+    android: {
       java: `
 import android.app.Application;\n
 public class MyCustomApplication extends Application {
@@ -32,30 +32,13 @@ public class MyCustomApplication extends Application {
     }
 }
       `,
-      kotlin: `
+    kotlin: `
 import android.app.Application;\n
 class MyCustomApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Smartlook.setupAndStartRecording(YOUR_API_KEY)
     }
-}
-      `,
-    },
-    cordova: {
-      javascript: `
-if(document.readyState === "complete") {
-  document.addEventListener("deviceready", onDeviceReady, false);
-}\n
-function onDeviceReady() {
-    Smartlook.setupAndStartRecording({smartlookAPIKey: "YOUR_API_KEY"});
-}
-      `,
-    },
-    ionic: {
-      typescript: `
-this.platform.ready().then(() => {
-    this.smartlook.setupAndStartRecording(new SmartlookSetupConfig("YOUR API KEY"));
 }
       `,
     },
@@ -80,19 +63,14 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
  
    Smartlook.setup(key: "YOUR_API_KEY")
    Smartlook.startRecording()
-}      `,
+}      
+      `,
     },
     react: {
       js: `
-// Smartlook initialization
 var Smartlook = require("smartlook-react-native-wrapper"); 
 Smartlook.setupAndStartRecording("API_KEY");
-      `,
-    },
-    xamarin: {
-      csharp: `
-Xamarin C#
-      `,
+`,
     },
     unity: {
       csharp: `
@@ -109,12 +87,11 @@ public class NewBehaviourScript : MonoBehaviour
     {
         ...
     }
-}
-`,
+}`,
     },
     unreal: {
       csharp: `
-Unreal C#
+UNREAL - C#
       `,
     },
     cocos: {
@@ -138,13 +115,35 @@ class AppActivity : Cocos2dxActivity() {
 }
       `
    },
+   cordova: {
+      javascript: `
+if(document.readyState === "complete") {
+  document.addEventListener("deviceready", onDeviceReady, false);
+}\n
+function onDeviceReady() {
+    Smartlook.setupAndStartRecording({smartlookAPIKey: "YOUR_API_KEY"});
+}    `,
+    },
+    ionic: { 
+      typescrit: `
+this.platform.ready().then(() => {
+    this.smartlook.setupAndStartRecording(new SmartlookSetupConfig("YOUR API KEY"));
+}
+      `,
+    },
    flutter: {
       dart: `
-      Smartlook.setupAndStartRecording('YOUR_API_KEY');
+Smartlook.setupAndStartRecording('YOUR_API_KEY');
    `,
-   }
+   },
+xamarin: {
+      csharp: `
+XAMARIN - C#
+      `,
+    },
   }}
 />
+
 
 This is basically all you need to record your sessions. All other events in the app life cycle are handled by Smartlook automatically.
 
