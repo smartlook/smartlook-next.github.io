@@ -144,12 +144,16 @@ NotificationCenter.default.addObserver(forName: Smartlook.dashboardVisitorURLCha
       'objective-c': `
 [[NSNotificationCenter defaultCenter] addObserverForName:SLDashboardSessionURLChangedNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
   NSURL *currentSessionURL = [Smartlook getDashboardSessionURLWithCurrentTimestamp:NO];
-  [[Amplitude instance] logEvent:@"Smartlook session URL" withEventProperties:@{ @"session_url" : currentSessionURL}];
+  if (currentSessionURL != nil) {
+      [[Amplitude instance] logEvent:@"Smartlook session URL" withEventProperties:@{ @"session_url" : currentSessionURL}];
+  }
 }];\n
 [[NSNotificationCenter defaultCenter] addObserverForName:SLDashboardVisitorURLChangedNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
   NSURL *currentVisitorURL = [Smartlook getDashboardVisitorURL];
-  AMPIdentify *identify = [[AMPIdentify identify] add:@"smartlook_visitor_url" value:currentVisitorURL];
-  [[Amplitude instance] identify:identify];
+  if (currentVisitorURL != nil) {
+    AMPIdentify *identify = [[AMPIdentify identify] add:@"smartlook_visitor_url" value:currentVisitorURL];
+    [[Amplitude instance] identify:identify];
+  }
 }];
 `,
     },

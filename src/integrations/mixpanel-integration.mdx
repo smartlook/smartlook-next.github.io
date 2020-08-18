@@ -10,7 +10,13 @@ import { CodeBlock, TextBlock } from "components";
 
 ## Manual integration
 
+<TextBlock invisibleOn='ios'>
 Smartlook can be easily integrated into Mixpanel using `IntegrationListener`:
+</TextBlock>
+
+<TextBlock visibleOn='ios'>
+Smartlook can be easily integrated into Mixpanel using `Notifications`:
+</TextBlock>
 
 <CodeBlock
   kind="example"
@@ -132,11 +138,15 @@ NotificationCenter.default.addObserver(forName: Smartlook.dashboardVisitorURLCha
       'objective-c': `
 [[NSNotificationCenter defaultCenter] addObserverForName:SLDashboardSessionURLChangedNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
     NSURL *currentSessionURL = [Smartlook getDashboardSessionURLWithCurrentTimestamp:NO];
-    [mixpanel track:@"Smartlook session URL" properties:@{ @"session_url" : currentSessionURL}];
+    if (currentSessionURL != nil) {
+      [mixpanel track:@"Smartlook session URL" properties:@{ @"session_url" : currentSessionURL}];
+    }
 }];\n
 [[NSNotificationCenter defaultCenter] addObserverForName:SLDashboardVisitorURLChangedNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
     NSURL *currentVisitorURL = [Smartlook getDashboardVisitorURL];
-    [mixpanel.people set:@"smartlook_visitor_url" to:currentVisitorURL.absoluteString];
+    if (currentVisitorURL != nil) {
+      [mixpanel.people set:@"smartlook_visitor_url" to:currentVisitorURL.absoluteString];
+    }
 }];
       `,
     },
