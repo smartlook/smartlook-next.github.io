@@ -10,6 +10,7 @@ import { Code, CodeBlock, TextBlock, Link } from "components";
 1. Add Smartlook in your **app’s** `build.gradle`:
 
 <Code
+  kind="example"
   snippets={{
     gradle: `
 implementation('com.smartlook.recording:app:1.5.2-native')
@@ -20,6 +21,7 @@ implementation('com.smartlook.recording:app:1.5.2-native')
 2. Add Smartlook Maven repository in your **projects** `build.gradle`:
 
 <Code
+  kind="example"
   snippets={{
     gradle: `
 allprojects {
@@ -36,6 +38,7 @@ allprojects {
 3.Setup and start Smartlook in **onCreate()** of your **Application** class:
 
 <Code
+  kind="example"
   snippets={{
       java: `
 public class MyCustomApplication extends Application {
@@ -63,7 +66,7 @@ To setup Smartlook, the **unique project API key **is needed. It can be found in
 `}
 </TextBlock>
 
-4. Smartlook now starts recording the app. The recordings will appear in the [Smartlook player](https://app.smartlook.com/) shortly.  
+4. Smartlook now starts recording the app. The recordings will appear in the [Smartlook player](https://app.smartlook.com/) shortly.
 
 <TextBlock kind="important">
 {`
@@ -76,12 +79,15 @@ Currently **minimal** supported Android version is **Jelly Bean (API 18)**.
 
 # Further Steps
 
+All Smartlook SDK methods are documented in the
+<Link to="/api_reference" platform="android">Smartlook API reference</Link>.
+
 <TextBlock>{`
 All Smartlook SDK methods are documented in the <Link to="/api_reference" platform="android">Smartlook API reference</Link>.
 \n
 Some **advanced use-case** and **troubleshooting** case-studies are described in the Cookbooks section of this documentation.
 \n
-**Issues and bugs** can be reported in the <Link to="https://github.com/smartlook/smartlook-android-sdk/issues">issue tracker</Link>.
+**Issues and bugs** can be reported in the <Link to="https://github.com/smartlook/smartlook-mobile-issue-tracker">issue tracker</Link>.
 \n
 **Concepts** undelying the Smartlook functionality are descibed in the Conceptual documentation:
 * <Link to="/conceptual/setup-and-start-recording" platform="android">Setup & Start Recording</Link>
