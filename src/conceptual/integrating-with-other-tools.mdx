@@ -14,7 +14,7 @@ import { usePlatforms } from 'hooks'
 It is a typical use-case that an application uses several specialized 3rd party libraries to cover various aspects of the analytics, and it is an advantage when it is possible to integrate these tools together.
 
 <TextBlock>{`
-In order to integrate Smartlook recordings with other tools, Smartlook publishes two URLs that point to the currently recorded session, and the current user in Smartlook dashboard. Smartlook also notifies the hosting application whenever one of the integration URLs changes. The notification mechanism heavily depends on the platform, technical details are provided in <Link to="/api_reference#integrations">the API Reference</Link>.
+In order to integrate Smartlook recordings with other tools, Smartlook publishes two URLs that point to the currently recorded session, and the current user in Smartlook dashboard. **Smartlook also notifies the hosting application whenever one of the integration URLs changes**. The notification mechanism heavily depends on the platform, technical details are provided in <Link to="/api_reference#integrations">the API Reference</Link>.
 `}</TextBlock>
 
 <TextBlock kind="important">{`
@@ -104,14 +104,17 @@ AnotherTool.setProperty("SmartlookURL", dashboardSessionUrl)
    },
 xamarin: {
       csharp: `
-XAMARIN - C#
+Uri sessionUri = Smartlook.Analytics.DashboardSessionUri();
+AnotherTool.setProperty("SmartlookURL", sessionUri);
       `,
     },
   }}
 />
 
+<TextBlock>{`
+Technical details are provided in the respective <Link to="/api_reference#dashboard-session-url">Session URL API Reference</Link>.
+`}</TextBlock>
 
-<Link to="/api_reference#dashboard-session-url">Session URL API Reference</Link>.
 
 # Current Visitor URL
 
@@ -190,12 +193,13 @@ AnotherTool.setProperty("SmartlookURL", dashboardVisitorURL)
    },
 xamarin: {
       csharp: `
-XAMARIN - C#
+Uri visitorUri = Smartlook.Analytics.DashboardVisitorUri;
+AnotherTool.setProperty("SmartlookURL", visitorUri)
       `,
     },
   }}
 />
 
-
-<Link to="/api_reference#dashboard-visitor-url">Visitor URL API Reference</Link>.
-
+<TextBlock>{`
+Technical details are provided in the respective <Link to="/api_reference#dashboard-visitor-url">Visitor URL API Reference</Link>.
+`}</TextBlock>
